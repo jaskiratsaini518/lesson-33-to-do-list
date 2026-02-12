@@ -1,0 +1,114 @@
+<html>
+
+
+<head>
+    <title>Shopping list app</title>
+</head>
+
+<body>
+    <h3>Add to the list here:</h3>
+    <form id="myForm">
+        <input id="myInput" type="text">
+        <button>Add</button>
+    </form>
+    <br><br>
+    <h3>Shopping List</h3>
+    <ul id="myItem"></ul>
+
+    <script>
+        var myForm = document.getElementById("myForm")
+        var myInput = document.getElementById("myInput")
+        var myItem = document.getElementById("myItem")
+
+        myForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            createItem(myInput.value)
+        })
+
+        function createItem(inputItems) {
+            var items = `<li>${inputItems}
+                <button onclick = "deleteElement(this)">Delete</button> </li>`
+            myItem.insertAdjacentHTML("beforeend", items)
+            myItems.value = ""
+            myInput.focus()
+        }
+
+        function deleteElement(ElementtoDelete) {
+            ElementtoDelete.parentElement.remove()
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+        
+        h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        input {
+            padding: 8px 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+        }
+        
+        button {
+            padding: 8px 14px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #45a049;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+            width: 280px;
+        }
+        
+        li {
+            background: white;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        li button {
+            background: #e74c3c;
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+        
+        li button:hover {
+            background: #c0392b;
+        }
+    </style>
+
+</body>
+
+</html>
